@@ -12,7 +12,7 @@
         <module name="atcrowdfunding-web" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="10" />
+    <bytecodeTargetLevel target="8" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
