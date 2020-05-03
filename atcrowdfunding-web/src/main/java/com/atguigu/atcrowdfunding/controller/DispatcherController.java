@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-public class UserController {
+public class DispatcherController {
 
     @Autowired
     private UserService userService;
 
     @RequestMapping("/doLogin")
-    public String login(@RequestBody Map<String, User> map){
+    public String doLogin(@RequestBody Map<String,User> map){
         User dbUser=userService.getUserByAccountUserpassword(map.get("params"));
         if (dbUser!=null){
             return "success";
