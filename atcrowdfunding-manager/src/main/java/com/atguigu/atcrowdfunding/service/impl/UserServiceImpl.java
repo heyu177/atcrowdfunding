@@ -6,6 +6,9 @@ import com.atguigu.atcrowdfunding.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -14,5 +17,13 @@ public class UserServiceImpl implements UserService {
 
     public User getUserByAccountUserpassword(User user) {
         return userMapper.getUserByAccountUserpassword(user);
+    }
+
+    public List<User> pageQueryData(Map<String, Object> map) {
+        return userMapper.pageQueryData(map);
+    }
+
+    public int pageQueryCount() {
+        return userMapper.pageQueryCount();
     }
 }
