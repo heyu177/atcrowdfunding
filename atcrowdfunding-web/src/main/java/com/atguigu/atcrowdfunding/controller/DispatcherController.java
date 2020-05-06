@@ -18,8 +18,8 @@ public class DispatcherController {
     private UserService userService;
 
     @RequestMapping("/doLogin")
-    public String doLogin(@RequestBody Map<String,User> map, HttpSession session){
-        User dbUser=userService.getUserByAccountUserpassword(map.get("params"));
+    public String doLogin(@RequestBody User user, HttpSession session){
+        User dbUser=userService.getUserByAccountUserpassword(user);
         if (dbUser!=null){
             session.setAttribute("user",dbUser);
             return "success";
