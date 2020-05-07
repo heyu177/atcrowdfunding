@@ -11,5 +11,7 @@ public interface UserService {
 
     public List<User> pageQueryData(Map<String,Object> map);
 
-    public int pageQueryCount();
+    public int pageQueryCount(Map<String,Object> map);
+
+    public void insertUser(User user);
 }
