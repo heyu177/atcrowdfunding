@@ -25,12 +25,13 @@ public class UserController {
      * @return
      */
     @RequestMapping("/index")
-    public Map<String,Object> index(@RequestParam(required = false,defaultValue = "1") Integer pagenum,@RequestParam(required = false,defaultValue = "2") Integer pagesize){
+    public Map<String,Object> index(@RequestParam(required = false,defaultValue = "1") Integer pagenum,@RequestParam(required = false,defaultValue = "2") Integer pagesize,@RequestParam(required = false,defaultValue = "") String account){
         Map<String,Object> map=new HashMap<String, Object>();
         map.put("start",(pagenum-1)*pagesize);
         map.put("size",pagesize);
+        map.put("account","%"+account+"%");
         List<User> users = userService.pageQueryData(map);
-        int totalnum=userService.pageQueryCount();
+        int totalnum=userService.pageQueryCount(map);
         Map<String,Object> responseMap=new HashMap<String, Object>();
         responseMap.put("total",totalnum);
         responseMap.put("data",users);

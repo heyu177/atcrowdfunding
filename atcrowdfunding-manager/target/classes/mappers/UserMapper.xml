@@ -6,4 +6,10 @@
     <select id="getUserByAccountUserpassword" resultType="user">
         select * from t_user where account=#{account} and userpassword=#{userpassword}
     </select>
+    <select id="pageQueryData" resultType="user">
+        select * from t_user where account like #{account} limit #{start},#{size}
+    </select>
+    <select id="pageQueryCount" resultType="int">
+        select count(*) from t_user where account like #{account}
+    </select>
 </mapper>

@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.pageQueryData(map);
     }
 
-    public int pageQueryCount() {
-        return userMapper.pageQueryCount();
+    public int pageQueryCount(Map<String, Object> map) {
+        return userMapper.pageQueryCount(map);
     }
 }
