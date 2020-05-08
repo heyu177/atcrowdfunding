@@ -7,6 +7,15 @@ public class User {
     private String username;
     private String userpassword;
     private String email;
+    private String createtime;
+
+    public String getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(String createtime) {
+        this.createtime = createtime;
+    }
 
     public String getEmail() {
         return email;

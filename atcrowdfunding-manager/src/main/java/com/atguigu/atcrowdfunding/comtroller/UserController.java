@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @RestController
 @RequestMapping("/user")
@@ -41,6 +40,8 @@ public class UserController {
 
     @RequestMapping("/insert")
     public String insert(@RequestBody User user){
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        user.setCreatetime(sdf.format(new Date()));
         user.setUserpassword("1234");
         try {
             userService.insertUser(user);
