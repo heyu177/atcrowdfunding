@@ -7,12 +7,18 @@
         select * from t_user where account=#{account} and userpassword=#{userpassword}
     </select>
     <select id="pageQueryData" resultType="user">
-        select * from t_user where account like #{account} limit #{start},#{size}
+        select * from t_user where account like #{account} order by createtime desc limit #{start},#{size}
     </select>
     <select id="pageQueryCount" resultType="int">
         select count(*) from t_user where account like #{account}
     </select>
     <insert id="insertUser">
-        insert into t_user(account,username,userpassword,email) values(#{account},#{username},#{userpassword},#{email})
+        insert into t_user(account,username,userpassword,email,createtime) values(#{account},#{username},#{userpassword},#{email},#{createtime})
     </insert>
+    <update id="updateUser">
+        update t_user set account=#{account},username=#{username},email=#{email} where id=#{id}
+    </update>
+    <delete id="deleteUser">
+        delete from t_user where id=#{id}
+    </delete>
 </mapper>
