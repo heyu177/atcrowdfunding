@@ -25,7 +25,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("/index")
-    public Map<String,Object> index(@RequestParam(required = false,defaultValue = "1") Integer pagenum,@RequestParam(required = false,defaultValue = "2") Integer pagesize,@RequestParam(required = false,defaultValue = "") String account){
+    public Map<String,Object> index(Integer pagenum,Integer pagesize,@RequestParam(required = false,defaultValue = "") String account){
         Map<String,Object> map=new HashMap<String, Object>();
         map.put("start",(pagenum-1)*pagesize);
         map.put("size",pagesize);
@@ -68,6 +68,21 @@ public class UserController {
         Map<String,Object> responseMap=new HashMap<String, Object>();
         try {
             int rows=userService.deleteUser(id);
+            responseMap.put("result","success");
+            responseMap.put("data",rows);
+            return responseMap;
+        }catch (Exception e){
+            e.printStackTrace();
+            responseMap.put("result","fail");
+            return responseMap;
+        }
+    }
+
+    @RequestMapping("/deletes")
+    public Map<String,Object> deletes(Integer[] ids){
+        Map<String,Object> responseMap=new HashMap<String, Object>();
+        try {
+            int rows=userService.deleteUsers(ids);
             responseMap.put("result","success");
             responseMap.put("data",rows);
             return responseMap;

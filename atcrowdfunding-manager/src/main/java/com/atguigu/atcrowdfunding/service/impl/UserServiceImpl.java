@@ -38,4 +38,8 @@ public class UserServiceImpl implements UserService {
     public int deleteUser(Integer id) {
         return userMapper.deleteUser(id);
     }
+
+    public int deleteUsers(Integer[] ids) {
+        return userMapper.deleteUsers(ids);
+    }
 }
