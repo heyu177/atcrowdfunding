@@ -51,4 +51,30 @@ public class UserController {
             return "fail";
         }
     }
+
+    @RequestMapping("/update")
+    public String update(@RequestBody User user){
+        try {
+            userService.updateUser(user);
+            return "success";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "fail";
+        }
+    }
+
+    @RequestMapping("/delete")
+    public Map<String,Object> delete(Integer id){
+        Map<String,Object> responseMap=new HashMap<String, Object>();
+        try {
+            int rows=userService.deleteUser(id);
+            responseMap.put("result","success");
+            responseMap.put("data",rows);
+            return responseMap;
+        }catch (Exception e){
+            e.printStackTrace();
+            responseMap.put("result","fail");
+            return responseMap;
+        }
+    }
 }

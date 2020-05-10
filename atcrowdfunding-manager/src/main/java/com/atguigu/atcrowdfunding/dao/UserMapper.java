@@ -16,4 +16,8 @@ public interface UserMapper {
     public int pageQueryCount(Map<String,Object> map);
 
     public void insertUser(User user);
+
+    public void updateUser(User user);
+
+    public int deleteUser(Integer id);
 }
