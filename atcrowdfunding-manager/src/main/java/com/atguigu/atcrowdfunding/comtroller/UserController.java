@@ -79,7 +79,8 @@ public class UserController {
     }
 
     @RequestMapping("/deletes")
-    public Map<String,Object> deletes(Integer[] ids){
+    public Map<String,Object> deletes(@RequestParam(value = "ids[]") Integer[] ids){
+        System.out.println(ids);
         Map<String,Object> responseMap=new HashMap<String, Object>();
         try {
             int rows=userService.deleteUsers(ids);
