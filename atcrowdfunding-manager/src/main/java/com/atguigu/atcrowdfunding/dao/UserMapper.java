@@ -1,5 +1,6 @@
 package com.atguigu.atcrowdfunding.dao;
 
+import com.atguigu.atcrowdfunding.entity.Role;
 import com.atguigu.atcrowdfunding.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,4 +24,6 @@ public interface UserMapper {
     public int deleteUser(Integer id);
 
     public int deleteUsers(@Param("ids") Integer[] ids);
+
+    public List<Role> selectRoles(Integer id);
 }

@@ -1,5 +1,6 @@
 package com.atguigu.atcrowdfunding.comtroller;
 
+import com.atguigu.atcrowdfunding.entity.Role;
 import com.atguigu.atcrowdfunding.entity.User;
 import com.atguigu.atcrowdfunding.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +80,7 @@ public class UserController {
     }
 
     @RequestMapping("/deletes")
-    public Map<String,Object> deletes(@RequestParam(value = "ids[]") Integer[] ids){
+    public Map<String,Object> deletes(Integer[] ids){
         System.out.println(ids);
         Map<String,Object> responseMap=new HashMap<String, Object>();
         try {
@@ -92,5 +93,11 @@ public class UserController {
             responseMap.put("result","fail");
             return responseMap;
         }
+    }
+
+    @RequestMapping("/getRoles")
+    public List<Role> getRoles(Integer id){
+        List<Role> list=userService.selectRoles(id);
+        return list;
     }
 }
