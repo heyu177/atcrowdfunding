@@ -1,5 +1,6 @@
 package com.atguigu.atcrowdfunding.service;
 
+import com.atguigu.atcrowdfunding.entity.Role;
 import com.atguigu.atcrowdfunding.entity.User;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface UserService {
     public int deleteUser(Integer id);
 
     public int deleteUsers(Integer[] ids);
+
+    public List<Role> selectRoles(Integer id);
 }

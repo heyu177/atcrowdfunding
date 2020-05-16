@@ -1,6 +1,7 @@
 package com.atguigu.atcrowdfunding.service.impl;
 
 import com.atguigu.atcrowdfunding.dao.UserMapper;
+import com.atguigu.atcrowdfunding.entity.Role;
 import com.atguigu.atcrowdfunding.entity.User;
 import com.atguigu.atcrowdfunding.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,9 @@ public class UserServiceImpl implements UserService {
 
     public int deleteUsers(Integer[] ids) {
         return userMapper.deleteUsers(ids);
+    }
+
+    public List<Role> selectRoles(Integer id) {
+        return userMapper.selectRoles(id);
     }
 }
