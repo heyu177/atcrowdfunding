@@ -23,4 +23,8 @@ public interface UserService {
     public int deleteUsers(Integer[] ids);
 
     public List<Role> selectRoles(Integer id);
+
+    public void assignRole(Map<String,Integer> map);
+
+    public void unAssignRole(Map<String,Integer> map);
 }

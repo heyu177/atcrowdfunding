@@ -99,4 +99,29 @@ public class UserController {
         List<Role> list=userService.selectRoles(id);
         return list;
     }
+
+    @RequestMapping("/doAssign")
+    public String doAssign(@RequestBody Map<String,Integer> map){
+        try {
+            userService.assignRole(map);
+            return "success";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "fail";
+        }
+    }
+
+    @RequestMapping("/doUnAssign")
+    public String doUnAssign(Integer userId,Integer roleId){
+        Map<String,Integer> map=new HashMap<String, Integer>();
+        map.put("userId",userId);
+        map.put("roleId",roleId);
+        try {
+            userService.unAssignRole(map);
+            return "success";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "fail";
+        }
+    }
 }

@@ -47,4 +47,12 @@ public class UserServiceImpl implements UserService {
     public List<Role> selectRoles(Integer id) {
         return userMapper.selectRoles(id);
     }
+
+    public void assignRole(Map<String, Integer> map) {
+        userMapper.assignRole(map);
+    }
+
+    public void unAssignRole(Map<String, Integer> map) {
+        userMapper.unAssignRole(map);
+    }
 }
