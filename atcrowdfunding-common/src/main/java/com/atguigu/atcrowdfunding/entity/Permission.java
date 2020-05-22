@@ -10,7 +10,7 @@ public class Permission {
     private String url;
     private Integer pid;
     private boolean open;
-    private List<Permission> children=new ArrayList<>();
+    private List<Permission> children;
 
     public Integer getId() {
         return id;

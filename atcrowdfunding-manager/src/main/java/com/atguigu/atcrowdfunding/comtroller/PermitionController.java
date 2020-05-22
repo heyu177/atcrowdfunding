@@ -18,15 +18,19 @@ public class PermitionController {
 
     @RequestMapping("/loadData")
     public Object loadData(){
-        List<Permission> permissions=new ArrayList<Permission>();
-        Permission root=permissionService.queryRootPermission();
-        List<Permission> childPermissions=permissionService.queryChildPermissions(root.getId());
+        Permission parent=new Permission();
+        parent.setId(0);
+        queryChildPermissions(parent);
+        return parent.getChildren();
+    }
+
+    private void queryChildPermissions(Permission parent){
+        List<Permission> childPermissions=permissionService.queryChildPermissions(parent.getId());
         for (Permission childPermission:childPermissions){
-            List<Permission> childchildPermissions=permissionService.queryChildPermissions(childPermission.getId());
-            childPermission.setChildren(childchildPermissions);
+            queryChildPermissions(childPermission);
         }
-        root.setChildren(childPermissions);
-        permissions.add(root);
-        return permissions;
+        if (!childPermissions.isEmpty()){
+            parent.setChildren(childPermissions);
+        }
     }
 }
