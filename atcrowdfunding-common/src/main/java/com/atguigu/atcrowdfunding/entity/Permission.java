@@ -9,7 +9,7 @@ public class Permission {
     private String name;
     private String url;
     private Integer pid;
-    private boolean open;
+    private boolean open=true;
     private List<Permission> children;
 
     public Integer getId() {
