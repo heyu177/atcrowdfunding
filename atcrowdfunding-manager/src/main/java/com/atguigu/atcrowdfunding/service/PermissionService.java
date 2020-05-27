@@ -11,4 +11,8 @@ public interface PermissionService {
     public List<Permission> queryChildPermissions(Integer pid);
 
     public void insertPermission(Permission permission);
+
+    public void updatePermission(Permission permission);
+
+    public void deletePermission(Integer id);
 }

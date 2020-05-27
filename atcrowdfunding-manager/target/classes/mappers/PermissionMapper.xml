@@ -6,4 +6,10 @@
     <insert id="insertPermission">
         insert into t_permission(name,pid,url) values(#{name},#{pid},#{url})
     </insert>
+    <update id="updatePermission">
+        update t_permission set name=#{name}, url=#{url} where id=#{id}
+    </update>
+    <delete id="deletePermission">
+        delete from t_permission where id=#{id}
+    </delete>
 </mapper>
