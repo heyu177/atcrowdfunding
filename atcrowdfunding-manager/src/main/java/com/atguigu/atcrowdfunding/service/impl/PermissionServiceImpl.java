@@ -1,6 +1,6 @@
 package com.atguigu.atcrowdfunding.service.impl;
 
-import com.atguigu.atcrowdfunding.dao.PermissionDAO;
+import com.atguigu.atcrowdfunding.dao.PermissionMapper;
 import com.atguigu.atcrowdfunding.entity.Permission;
 import com.atguigu.atcrowdfunding.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +12,17 @@ import java.util.List;
 public class PermissionServiceImpl implements PermissionService {
 
     @Autowired
-    private PermissionDAO permissionDAO;
+    private PermissionMapper permissionMapper;
 
     public Permission queryRootPermission() {
-        return permissionDAO.queryRootPermission();
+        return permissionMapper.queryRootPermission();
     }
 
     public List<Permission> queryChildPermissions(Integer pid) {
-        return permissionDAO.queryChildPermissions(pid);
+        return permissionMapper.queryChildPermissions(pid);
+    }
+
+    public void insertPermission(Permission permission) {
+        permissionMapper.insertPermission(permission);
     }
 }

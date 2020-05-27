@@ -1,5 +1,6 @@
 package com.atguigu.atcrowdfunding.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Permission {
@@ -9,7 +10,6 @@ public class Permission {
     private String url;
     private Integer pid;
     private boolean open=true;
-    private String icon;
     private List<Permission> children;
 
     public Integer getId() {
