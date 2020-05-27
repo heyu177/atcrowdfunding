@@ -36,6 +36,28 @@ public class PermitionController {
         }
     }
 
+    @RequestMapping("/update")
+    public String update(@RequestBody Permission permission){
+        try {
+            permissionService.updatePermission(permission);
+            return "success";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "fail";
+        }
+    }
+
+    @RequestMapping("/delete")
+    public String delete(Integer id){
+        try {
+            permissionService.deletePermission(id);
+            return "success";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "fail";
+        }
+    }
+
     private void queryChildPermissions(Permission parent){
         List<Permission> childPermissions=permissionService.queryChildPermissions(parent.getId());
         for (Permission childPermission:childPermissions){
