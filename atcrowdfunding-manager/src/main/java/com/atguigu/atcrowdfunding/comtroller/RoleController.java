@@ -4,6 +4,7 @@ import com.atguigu.atcrowdfunding.entity.Role;
 import com.atguigu.atcrowdfunding.entity.User;
 import com.atguigu.atcrowdfunding.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,5 +32,16 @@ public class RoleController {
         responseMap.put("total",totalnum);
         responseMap.put("data",roles);
         return responseMap;
+    }
+
+    @RequestMapping("/doAssign")
+    public String doAssign(@RequestBody Map<String,Object> map){
+        try {
+            roleService.assignPermission(map);
+            return "success";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "fail";
+        }
     }
 }
