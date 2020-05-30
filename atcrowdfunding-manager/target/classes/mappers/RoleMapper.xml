@@ -9,4 +9,13 @@
     <select id="pageQueryCount" resultType="int">
         select count(*) from t_role where name like #{name}
     </select>
+    <insert id="assignPermission">
+        insert into t_role_permission(role_id,permission_id) values
+        <foreach collection="permissionIds" item="permissionId" separator=",">
+            (#{roleId},#{permissionId})
+        </foreach>
+    </insert>
+    <delete id="deletePermission">
+        delete from t_role_permission where role_id=#{roleId}
+    </delete>
 </mapper>

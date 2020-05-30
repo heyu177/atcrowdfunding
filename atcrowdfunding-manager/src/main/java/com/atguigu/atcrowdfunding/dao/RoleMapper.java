@@ -10,4 +10,8 @@ public interface RoleMapper {
     public List<Role> pageQueryData(Map<String,Object> map);
 
     public int pageQueryCount(Map<String,Object> map);
+
+    public void assignPermission(Map<String,Object> map);
+
+    public void deletePermission(Map<String,Object> map);
 }

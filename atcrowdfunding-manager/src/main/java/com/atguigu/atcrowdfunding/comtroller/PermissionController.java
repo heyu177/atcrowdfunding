@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/permission")
-public class PermitionController {
+public class PermissionController {
 
     @Autowired
     private PermissionService permissionService;
@@ -58,10 +58,32 @@ public class PermitionController {
         }
     }
 
+    @RequestMapping("/loadAssignData")
+    public Object loadAssignData(Integer roleId){
+        List<Integer> permissionIds=permissionService.getPermissionIdsByRoleId(roleId);
+        Permission parent=new Permission();
+        parent.setId(0);
+        queryChildPermissions(parent,permissionIds);
+        return parent.getChildren();
+    }
+
     private void queryChildPermissions(Permission parent){
         List<Permission> childPermissions=permissionService.queryChildPermissions(parent.getId());
         for (Permission childPermission:childPermissions){
             queryChildPermissions(childPermission);
+        }
+        if (!childPermissions.isEmpty()){
+            parent.setChildren(childPermissions);
+        }
+    }
+
+    private void queryChildPermissions(Permission parent,List<Integer> permissionIds){
+        List<Permission> childPermissions=permissionService.queryChildPermissions(parent.getId());
+        for (Permission childPermission:childPermissions){
+            if (permissionIds.contains(childPermission.getId())){
+                childPermission.setChecked(true);
+            }
+            queryChildPermissions(childPermission,permissionIds);
         }
         if (!childPermissions.isEmpty()){
             parent.setChildren(childPermissions);

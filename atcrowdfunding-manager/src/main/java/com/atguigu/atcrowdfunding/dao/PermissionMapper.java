@@ -18,4 +18,7 @@ public interface PermissionMapper {
     public void updatePermission(Permission permission);
 
     public void deletePermission(Integer id);
+
+    @Select("select permission_id from t_role_permission where role_id=#{roleId}")
+    public List<Integer> getPermissionIdsByRoleId(Integer roleId);
 }

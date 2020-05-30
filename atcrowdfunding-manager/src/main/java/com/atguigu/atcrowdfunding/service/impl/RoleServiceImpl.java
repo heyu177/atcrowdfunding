@@ -24,4 +24,9 @@ public class RoleServiceImpl implements RoleService {
     public int pageQueryCount(Map<String, Object> map) {
         return roleMapper.pageQueryCount(map);
     }
+
+    public void assignPermission(Map<String, Object> map) {
+        roleMapper.deletePermission(map);
+        roleMapper.assignPermission(map);
+    }
 }
